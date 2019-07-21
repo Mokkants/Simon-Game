@@ -1,0 +1,38 @@
+html,body{
+    height:100%;
+  }
+  
+  body{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  
+  .board{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width:20em;
+    height:20em;
+  }
+  
+  .button{
+    background-color:black;
+    margin:1px;
+  }
+  
+  .button-top-left{
+    border-top-left-radius:100%;
+  }
+  
+  .button-top-right{
+    border-top-right-radius:100%;
+  }
+  
+  .button-bottom-left{
+    border-bottom-left-radius:100%;
+  }
+  
+  .button-bottom-right{
+    border-bottom-right-radius:100%;
+  }
