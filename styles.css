@@ -9,12 +9,17 @@ body{
 }
 
 .board-wrap{
+  position: relative;
+  display:flex;
+  align-items: center;
+  justify-content: center;  
   padding: 1rem;
   background: 
       linear-gradient(to top right,rgb(15, 11, 7),rgba(128, 83, 0, 0.541)),
       linear-gradient(to top left,rgba(54, 35, 23, 0.904),transparent);
   border-radius:100%;
-  box-shadow:-5px 6px 5px 1px #333;
+  box-shadow:-5px 6px 5px 1px #333,
+  inset -2px 2px 5px 1px rgb(153, 142, 121);
 }
 
 .board{
@@ -28,9 +33,31 @@ body{
 }
 
 .button{
+  position: relative;
   background-color:black;
   margin:1px;
   cursor:pointer;
+  overflow: hidden;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+}
+
+.button-background{
+  width:60px;
+  height:60px;
+  background-image:url("https://opengameart.org/sites/default/files/Sci%20Fi%20Holed%20Metal%20Decorations.png");
+  background-size:250px;
+}
+
+.button-background::before{
+  position: absolute;
+  content:'';
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0,0,0,0.8);
 }
 
 .button-top-left{
@@ -47,4 +74,30 @@ body{
 
 .button-bottom-right{
   border-bottom-right-radius:100%;
+}
+
+.panel-wrap{
+  position:absolute;
+  padding:10px;
+  background: 
+      linear-gradient(to top right,rgb(15, 11, 7),rgb(122, 95, 45)),
+      linear-gradient(to top left,rgb(54, 35, 23),transparent);
+  border-radius: 30%;
+  height:4em;
+  width:4em;
+  display:flex;
+  -webkit-box-shadow: inset -2px 2px 3px 2px rgba(255,255,255,1);
+  -moz-box-shadow: inset -6px 6px 3px 2px rgba(255,255,255,1);
+  box-shadow: inset -2px 2px 5px 1px rgb(128, 113, 85);
+}
+
+.panel{
+  padding:10px;
+  background:black;
+  border-radius:30%;
+  flex-grow:1;
+  color:white;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
