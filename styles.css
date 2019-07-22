@@ -64,22 +64,35 @@ body{
   height:100%;
   border-top-left-radius:100%;
   background-color:rgba(0,0,0,0.85);
-  
+  opacity:.8;
+}
+
+.button.active::after{
+  opacity: 1 !important;
 }
 
 #button-top-left{
   transform:rotate(0deg);
 }
 
+#button-top-left::after{
+  background:
+    linear-gradient(75deg,rgb(165, 80, 24) 2%,rgba(117, 63, 27, 0.9) 50%,rgba(207, 131, 80, 0.9) 90%,rgba(177, 110, 65, 0.9)99%),
+    linear-gradient(120deg,rgb(247, 182, 139) 90%,rgba(255,137,58,1) 70%,rgba(255,255,255,1)20%);
+}
+
 #button-top-left.active::after{
   background:
     linear-gradient(60deg,rgb(165, 80, 24) 2%,rgba(255,137,58,0.9) 80%,transparent),
     linear-gradient(120deg,rgb(247, 182, 139) 90%,rgba(255,137,58,1) 70%,rgba(255,255,255,1)10%);
-
 }
 
 #button-top-right{
   transform:rotate(90deg);
+}
+
+#button-top-right::after{
+  background:linear-gradient(to top left,rgb(100, 138, 39) 1%,rgb(75, 102, 32) 50%,rgba(255,255,255,0.9));
 }
 
 #button-top-right.active::after{
@@ -90,12 +103,20 @@ body{
   transform:rotate(270deg);
 }
 
+#button-bottom-left::after{
+  background:linear-gradient(to bottom right,rgb(1, 68, 64) 1%,rgb(50, 71, 71) 50%,rgb(139, 180, 180));
+}
+
 #button-bottom-left.active::after{
   background:linear-gradient(to bottom right,rgb(1, 68, 64) 1%,rgba(3,181,170,1) 50%,rgba(255,255,255,0.9));
 }
 
 #button-bottom-right{
   transform:rotate(180deg);
+}
+
+#button-bottom-right::after{
+  background:linear-gradient(220deg,rgb(1, 1, 1) 1%,rgba(19,21,66,1) 40%,rgb(32, 33, 70) 50%,rgb(171, 171, 209)100%);
 }
 
 #button-bottom-right.active::after{
