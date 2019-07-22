@@ -43,14 +43,16 @@ body{
   justify-content: center;
 }
 
-.button-background{
+.button::before{
+  position: absolute;
+  content:'';
   width:60px;
   height:60px;
   background-image:url("https://opengameart.org/sites/default/files/Sci%20Fi%20Holed%20Metal%20Decorations.png");
   background-size:250px;
 }
 
-.button-background::before{
+.button::after{
   position: absolute;
   content:'';
   top:0;
