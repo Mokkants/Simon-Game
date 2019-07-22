@@ -65,6 +65,7 @@ body{
   border-top-left-radius:100%;
   background-color:rgba(0,0,0,0.85);
   opacity:.8;
+  transition: all .1 ease-in-out;
 }
 
 .button.active::after{
@@ -96,7 +97,7 @@ body{
 }
 
 #button-top-right.active::after{
-  background:linear-gradient(to top left,rgb(87, 126, 25) 1%,rgba(138,201,38,1) 50%,rgba(255,255,255,0.9));
+  background:linear-gradient(to top left,rgb(100, 161, 0) 1%,rgb(134, 230, 9) 50%,rgba(255,255,255,0.9));
 }
 
 #button-bottom-left{
@@ -108,7 +109,7 @@ body{
 }
 
 #button-bottom-left.active::after{
-  background:linear-gradient(to bottom right,rgb(1, 68, 64) 1%,rgba(3,181,170,1) 50%,rgba(255,255,255,0.9));
+  background:linear-gradient(to bottom right,rgb(1, 68, 64) 1%,rgb(5, 147, 230) 50%,rgba(255,255,255,0.9));
 }
 
 #button-bottom-right{
@@ -120,7 +121,7 @@ body{
 }
 
 #button-bottom-right.active::after{
-  background:linear-gradient(210deg,rgb(1, 1, 1) 1%,rgba(19,21,66,1) 60%,rgb(83, 85, 138) 95%,rgb(107, 108, 158)98%);
+  background:linear-gradient(210deg,rgb(1, 1, 1) 1%,rgb(53, 32, 129) 60%,rgb(83, 85, 138) 95%,rgb(107, 108, 158)98%);
 }
 
 .panel-wrap{
