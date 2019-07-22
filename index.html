@@ -10,16 +10,18 @@
 <body>
     <div class="board-wrap">
         <div class="board">
-            <div class="button" id="button-top-left"></div>
-            <div class="button" id="button-top-right"></div>
-            <div class="button" id="button-bottom-left"></div>
-            <div class="button" id="button-bottom-right"></div>
+            <div class="button" id="button-top-left" onclick="onClickButton(this)"></div>
+            <div class="button" id="button-top-right" onclick="onClickButton(this)"></div>
+            <div class="button" id="button-bottom-left" onclick="onClickButton(this)"></div>
+            <div class="button" id="button-bottom-right" onclick="onClickButton(this)"></div>
         </div>
         <div class="panel-wrap">
             <div class="panel">
+                <span onclick="onClickPlay()">Play</span>
             </div>
         </div>
     </div>
-</body>
 <script src="game.js"></script>
+
+</body>
 </html>
