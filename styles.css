@@ -1,49 +1,50 @@
 html,body{
-    height:100%;
-  }
-  
-  body{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
+  height:100%;
+}
 
-  .board-wrap{
-    padding: 1rem;
-    background: 
-        linear-gradient(to top right,rgb(15, 11, 7),rgba(128, 83, 0, 0.541)),
-        linear-gradient(to top left,rgba(54, 35, 23, 0.904),transparent);
-    border-radius:100%;
-    box-shadow:-5px 6px 5px 1px #333;
-  }
-  
-  .board{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    width:20em;
-    height:20em;
-    border:5px solid #ccc;
-    border-radius:100%;
-  }
-  
-  .button{
-    background-color:black;
-    margin:1px;
-  }
-  
-  .button-top-left{
-    border-top-left-radius:100%;
-  }
-  
-  .button-top-right{
-    border-top-right-radius:100%;
-  }
-  
-  .button-bottom-left{
-    border-bottom-left-radius:100%;
-  }
-  
-  .button-bottom-right{
-    border-bottom-right-radius:100%;
-  }
+body{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.board-wrap{
+  padding: 1rem;
+  background: 
+      linear-gradient(to top right,rgb(15, 11, 7),rgba(128, 83, 0, 0.541)),
+      linear-gradient(to top left,rgba(54, 35, 23, 0.904),transparent);
+  border-radius:100%;
+  box-shadow:-5px 6px 5px 1px #333;
+}
+
+.board{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width:20em;
+  height:20em;
+  border:5px solid #ccc;
+  border-radius:100%;
+}
+
+.button{
+  background-color:black;
+  margin:1px;
+  cursor:pointer;
+}
+
+.button-top-left{
+  border-top-left-radius:100%;
+}
+
+.button-top-right{
+  border-top-right-radius:100%;
+}
+
+.button-bottom-left{
+  border-bottom-left-radius:100%;
+}
+
+.button-bottom-right{
+  border-bottom-right-radius:100%;
+}
