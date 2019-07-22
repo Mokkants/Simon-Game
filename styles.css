@@ -72,7 +72,10 @@ body{
 }
 
 #button-top-left.active::after{
-  background-color:rgba(255,137,58,1);
+  background:
+    linear-gradient(60deg,rgb(165, 80, 24) 2%,rgba(255,137,58,0.9) 80%,transparent),
+    linear-gradient(120deg,rgb(247, 182, 139) 90%,rgba(255,137,58,1) 70%,rgba(255,255,255,1)10%);
+
 }
 
 #button-top-right{
@@ -80,7 +83,7 @@ body{
 }
 
 #button-top-right.active::after{
-  background-color:rgba(138,201,38,1);
+  background:linear-gradient(to top left,rgb(87, 126, 25) 1%,rgba(138,201,38,1) 50%,rgba(255,255,255,0.9));
 }
 
 #button-bottom-left{
@@ -88,7 +91,7 @@ body{
 }
 
 #button-bottom-left.active::after{
-  background-color:rgba(3,181,170,1);
+  background:linear-gradient(to bottom right,rgb(1, 68, 64) 1%,rgba(3,181,170,1) 50%,rgba(255,255,255,0.9));
 }
 
 #button-bottom-right{
@@ -96,7 +99,7 @@ body{
 }
 
 #button-bottom-right.active::after{
-  background-color:rgba(19,21,66,1);
+  background:linear-gradient(210deg,rgb(1, 1, 1) 1%,rgba(19,21,66,1) 60%,rgb(83, 85, 138) 95%,rgb(107, 108, 158)98%);
 }
 
 .panel-wrap{
