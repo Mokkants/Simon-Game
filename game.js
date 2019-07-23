@@ -70,6 +70,7 @@ function fireButton(el){
 function onClickButton(el)
 {
     if(inputLock) return; //Stop player from interacting
+    inputLock=true;
 
     var id = Object.keys(ids).find(key => ids[key] === el.id);
     inputSequence.push(parseInt(id,10));
@@ -77,16 +78,14 @@ function onClickButton(el)
     if(checkInputMatch()){
         fireButton(el);
         //Temporarily lock input
-        inputLock=true;
         setTimeout(()=>inputLock = false, timeConstants.BUTTON_FIRE_INPUT_LOCK_DURATION);
-        
-        playRound();
+        //Matchup timeout with input lock to avoid input between rounds
+        setTimeout(playRound,timeConstants.BUTTON_FIRE_INPUT_LOCK_DURATION);
     }
     else{
         //Game over, reset
         sequence=[];
         inputSequence=[];
-        inputLock=true;
     }
 }
 
