@@ -5,22 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">  
     <title>Simon Game</title>
 </head>
 <body>
-    <div class="board-wrap">
-        <div class="board">
-            <div class="button" id="button-top-left" onclick="onClickButton(this)"></div>
-            <div class="button" id="button-top-right" onclick="onClickButton(this)"></div>
-            <div class="button" id="button-bottom-left" onclick="onClickButton(this)"></div>
-            <div class="button" id="button-bottom-right" onclick="onClickButton(this)"></div>
-        </div>
-        <div class="panel-wrap">
-            <div class="panel">
-                <span onclick="onClickPlay()">Play</span>
+    <span>
+        Best score:
+        <span id="top-score">0</span>
+    </span>
+    <span class="board-cell">
+        <div class="board-wrap">
+                <div class="board">
+                    <div class="button" id="button-top-left" onclick="onClickButton(this)"></div>
+                    <div class="button" id="button-top-right" onclick="onClickButton(this)"></div>
+                    <div class="button" id="button-bottom-left" onclick="onClickButton(this)"></div>
+                    <div class="button" id="button-bottom-right" onclick="onClickButton(this)"></div>
+                </div>
+                <div class="panel-wrap">
+                    <div class="panel">
+                        <span onclick="onClickPlay()" class="fa fa-play" id="panel-button"></span>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+    </span>
+    
 <script src="game.js"></script>
 
 </body>

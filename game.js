@@ -3,6 +3,9 @@ var difficulty = 1; //No. of buttons added to the sequence per round
 var sequence = []; //Color sequence
 var inputSequence = []; //Sequence entered by player
 
+var recordCorrectInputs = 0;
+var currentCorrectInputs = 0;
+
 //Number associated with markup id
 var ids = Object.freeze({
     1:"button-top-left",
@@ -32,6 +35,7 @@ function onClickPlay(){
 //Add new item to sequence and play it
 function playRound(){
     if(inputSequence.length === sequence.length){
+        updateRecordScore();
         inputLock = true;
         addSequenceItems(difficulty);
         inputSequence=[];
@@ -89,6 +93,7 @@ function onClickButton(el)
     inputSequence.push(parseInt(id,10));
 
     if(checkInputMatch()){
+        currentCorrectInputs++;
         fireButton(el);
         //Temporarily lock input
         setTimeout(()=>inputLock = false, timeConstants.BUTTON_FIRE_INPUT_LOCK_DURATION);
@@ -99,9 +104,18 @@ function onClickButton(el)
         //Game over, reset
         sequence=[];
         inputSequence=[];
+        currentCorrectInputs = 0;
     }
 }
 
 function checkInputMatch(){
     return sequence[inputSequence.length-1] === inputSequence[inputSequence.length-1];
+}
+
+function updateRecordScore(){
+    if(currentCorrectInputs > recordCorrectInputs){
+        recordCorrectInputs = currentCorrectInputs;
+        document.getElementById("top-score").innerHTML = recordCorrectInputs.toString();
+    }
+    currentCorrectInputs = 0;
 }

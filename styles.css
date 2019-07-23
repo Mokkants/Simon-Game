@@ -3,12 +3,14 @@ html,body{
 }
 
 body{
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  display:grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .board-wrap{
+  width:21em;
+  height:21em;
   position: relative;
   display:flex;
   align-items: center;
@@ -24,10 +26,10 @@ body{
 
 .board{
   display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
   width:20em;
   height:20em;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   border:5px solid #ccc;
   border-radius:100%;
 }
@@ -148,4 +150,31 @@ body{
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+#panel-button{
+  cursor:pointer;
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+#top-score{
+  grid-column-start: 2;
+  width:100%;
+  text-align: center;
+}
+
+body>span{
+  grid-column-start: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow:column;
+}
+
+.board-cell{
+  grid-row-start: 2;
 }
