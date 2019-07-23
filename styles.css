@@ -84,7 +84,7 @@ body{
 
 #button-top-left.active::after{
   background:
-    linear-gradient(60deg,rgb(165, 80, 24) 2%,rgba(255,137,58,0.9) 80%,transparent),
+    linear-gradient(60deg,rgb(165, 80, 24) 2%,rgba(250, 106, 10, 0.9) 80%,transparent),
     linear-gradient(120deg,rgb(247, 182, 139) 90%,rgba(255,137,58,1) 70%,rgba(255,255,255,1)10%);
 }
 
@@ -117,11 +117,11 @@ body{
 }
 
 #button-bottom-right::after{
-  background:linear-gradient(220deg,rgb(1, 1, 1) 1%,rgba(19,21,66,1) 40%,rgb(32, 33, 70) 50%,rgb(171, 171, 209)100%);
+  background:linear-gradient(220deg,rgb(1, 1, 1) 1%,rgb(48, 19, 66) 40%,rgb(50, 32, 70) 50%,rgb(171, 171, 209)100%);
 }
 
 #button-bottom-right.active::after{
-  background:linear-gradient(210deg,rgb(1, 1, 1) 1%,rgb(53, 32, 129) 60%,rgb(83, 85, 138) 95%,rgb(107, 108, 158)98%);
+  background:linear-gradient(210deg,rgb(20, 8, 24) 1%,rgb(116, 9, 152) 60%,rgb(177, 152, 182) 95%);
 }
 
 .panel-wrap{
