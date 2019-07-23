@@ -12,7 +12,6 @@ var ids = Object.freeze({
 });
 
 var timeConstants = Object.freeze({
-    GAME_START_DELAY : 100,
     PLAY_ROUND_INTERVAL : 1000,
     BUTTON_FIRE_DURATION : 500,
     BUTTON_FIRE_INTERVAL : 1000,
@@ -21,7 +20,7 @@ var timeConstants = Object.freeze({
 
 //Start game
 function onClickPlay(){
-    setTimeout(playRound,timeConstants.GAME_START_DELAY);    
+    playRound();   
 }
 
 //Add new item to sequence and play it
@@ -48,7 +47,7 @@ function playSequence(index){
     var el = document.getElementById([ids[sequence[index]]]); 
     fireButton(el);
 
-    if(sequence.length !== index){
+    if(sequence.length-1 !== index){
         setTimeout(playSequence,timeConstants.BUTTON_FIRE_INTERVAL,index+1);
     }
     else{ //Unlock interaction once sequence is over
