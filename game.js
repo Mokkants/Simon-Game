@@ -1,47 +1,52 @@
-const activeClassName = "active";
-
-let inputLock = true; //Prevent player from interacting until false
-let difficulty = 1; //No. of buttons added to the sequence per round
-let sequence = []; //Color sequence
-let inputSequence = []; //Sequence entered by player
+var inputLock = true; //Prevent player from interacting until false
+var difficulty = 1; //No. of buttons added to the sequence per round
+var sequence = []; //Color sequence
+var inputSequence = []; //Sequence entered by player
 
 //Number associated with markup id
-const ids = Object.freeze({
+var ids = Object.freeze({
     1:"button-top-left",
     2:"button-top-right",
     3:"button-bottom-left",
     4:"button-bottom-right"
 });
 
-const findElementOfID = (id) => document.getElementById([ids[id]]);
-const activateButton = (el) => el.classList.add(activeClassName);
-const deactivateButton = (el) => el.classList.remove(activeClassName);
+var timeConstants = Object.freeze({
+    GAME_START_DELAY : 100,
+    PLAY_ROUND_INTERVAL : 1000,
+    BUTTON_FIRE_DURATION : 500,
+    BUTTON_FIRE_INTERVAL : 1000,
+    BUTTON_FIRE_INPUT_LOCK_DURATION : 200
+});
 
 function onClickPlay(){
-    setTimeout(playRound,100);    
+    setTimeout(playRound,timeConstants.GAME_START_DELAY);    
 }
 
 function addSequenceItems(difficulty){
     for(i=0;i<difficulty;i++){
-        let id = Math.floor(Math.random() * 4) + 1; //Between 1 and 4
+        var id = Math.floor(Math.random() * 4) + 1; //Between 1 and 4
         sequence.push(id);
     }
 }
 
 function fireButton(el){
+    var activeClassName = "active";
+
+    var activateButton = function(el){el.classList.add(activeClassName)};
+    var deactivateButton = function(el){el.classList.remove(activeClassName)};
+
     activateButton(el);
-    setTimeout(deactivateButton, 500,el);
+    setTimeout(deactivateButton, timeConstants.BUTTON_FIRE_DURATION, el);
 }
 
 function playSequence(index){
-    inputLock = true;
-    let el = findElementOfID(sequence[index]);
+    var el = document.getElementById([ids[sequence[index]]]);
     fireButton(el);
 
-    //Repeat process until end of array
-    index++;
+    //Repeat process with delay until end of array
     if(sequence.length !== index){
-        setTimeout(playSequence,1000,index);
+        setTimeout(playSequence,timeConstants.BUTTON_FIRE_INTERVAL,index+1);
     }
     else{
         inputLock=false;
@@ -50,9 +55,10 @@ function playSequence(index){
 
 function playRound(){
     if(inputSequence.length === sequence.length){
+        inputLock = true;
         addSequenceItems(difficulty);
         inputSequence=[];
-        setTimeout(playSequence, 1000, 0);
+        setTimeout(playSequence, timeConstants.PLAY_ROUND_INTERVAL, 0);
     }
 }
 
@@ -64,13 +70,14 @@ function onClickButton(el)
 {
     if(inputLock) return; //Stop player from interacting
 
-    let id = Object.keys(ids).find(key => ids[key] === el.id);
+    var id = Object.keys(ids).find(key => ids[key] === el.id);
     inputSequence.push(parseInt(id,10));
 
     if(checkInputMatch()){
         fireButton(el);
+        //Temporarily lock input
         inputLock=true;
-        setTimeout(()=>inputLock = false, 200);
+        setTimeout(()=>inputLock = false, timeConstants.BUTTON_FIRE_INPUT_LOCK_DURATION);
         
         playRound();
     }
