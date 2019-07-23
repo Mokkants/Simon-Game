@@ -34,6 +34,7 @@ function fireButton(el){
 }
 
 function playSequence(index){
+    inputLock = true;
     let el = findElementOfID(sequence[index]);
     fireButton(el);
 
@@ -61,6 +62,8 @@ function checkInputMatch(){
 
 function onClickButton(el)
 {
+    if(inputLock) return; //Stop player from interacting
+
     let id = Object.keys(ids).find(key => ids[key] === el.id);
     inputSequence.push(parseInt(id,10));
 
