@@ -11,11 +11,17 @@ var ids = Object.freeze({
     4:"button-bottom-right"
 });
 
+var stringConstants = Object.freeze({
+    ACTIVE_CLASS_NAME : "active",
+    COOLDOWN_CLASS_NAME : "cooling-down"
+});
+
 var timeConstants = Object.freeze({
     PLAY_ROUND_INTERVAL : 1000,
-    BUTTON_FIRE_DURATION : 500,
+    BUTTON_FIRE_DURATION : 300,
     BUTTON_FIRE_INTERVAL : 1000,
-    BUTTON_FIRE_INPUT_LOCK_DURATION : 200
+    BUTTON_FIRE_INPUT_LOCK_DURATION : 200,
+    BUTTON_COOLDOWN_DURATION: 10
 });
 
 //Start game
@@ -57,10 +63,16 @@ function playSequence(index){
 
 //Light up button
 function fireButton(el){
-    var activeClassName = "active";
-
-    var activateButton = function(el){el.classList.add(activeClassName)};
-    var deactivateButton = function(el){el.classList.remove(activeClassName)};
+    var activateButton = function(el){
+        el.classList.add(stringConstants.ACTIVE_CLASS_NAME);
+        el.classList.add(stringConstants.COOLDOWN_CLASS_NAME);
+    };
+    var deactivateButton = function(el){
+        el.classList.remove(stringConstants.ACTIVE_CLASS_NAME)
+        setTimeout(function(){
+            el.classList.remove(stringConstants.COOLDOWN_CLASS_NAME);
+        }, timeConstants.BUTTON_COOLDOWN_DURATION);
+    };
 
     activateButton(el);
     setTimeout(deactivateButton, timeConstants.BUTTON_FIRE_DURATION, el);
@@ -70,6 +82,7 @@ function fireButton(el){
 function onClickButton(el)
 {
     if(inputLock) return; //Stop player from interacting
+    if(el.classList.contains(stringConstants.COOLDOWN_CLASS_NAME)) return;
     inputLock=true;
 
     var id = Object.keys(ids).find(key => ids[key] === el.id);
