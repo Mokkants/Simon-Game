@@ -19,10 +19,22 @@ var timeConstants = Object.freeze({
     BUTTON_FIRE_INPUT_LOCK_DURATION : 200
 });
 
+//Start game
 function onClickPlay(){
     setTimeout(playRound,timeConstants.GAME_START_DELAY);    
 }
 
+//Add new item to sequence and play it
+function playRound(){
+    if(inputSequence.length === sequence.length){
+        inputLock = true;
+        addSequenceItems(difficulty);
+        inputSequence=[];
+        setTimeout(playSequence, timeConstants.PLAY_ROUND_INTERVAL, 0);
+    }
+}
+
+//Add new item to sequence (1-3 dep. on difficulty)
 function addSequenceItems(difficulty){
     for(i=0;i<difficulty;i++){
         var id = Math.floor(Math.random() * 4) + 1; //Between 1 and 4
@@ -30,6 +42,21 @@ function addSequenceItems(difficulty){
     }
 }
 
+//Fire buttons in the sequence (recursively, with delay)
+function playSequence(index){
+    //Fetch corresponding element
+    var el = document.getElementById([ids[sequence[index]]]); 
+    fireButton(el);
+
+    if(sequence.length !== index){
+        setTimeout(playSequence,timeConstants.BUTTON_FIRE_INTERVAL,index+1);
+    }
+    else{ //Unlock interaction once sequence is over
+        inputLock=false;
+    }
+}
+
+//Light up button
 function fireButton(el){
     var activeClassName = "active";
 
@@ -40,32 +67,7 @@ function fireButton(el){
     setTimeout(deactivateButton, timeConstants.BUTTON_FIRE_DURATION, el);
 }
 
-function playSequence(index){
-    var el = document.getElementById([ids[sequence[index]]]);
-    fireButton(el);
-
-    //Repeat process with delay until end of array
-    if(sequence.length !== index){
-        setTimeout(playSequence,timeConstants.BUTTON_FIRE_INTERVAL,index+1);
-    }
-    else{
-        inputLock=false;
-    }
-}
-
-function playRound(){
-    if(inputSequence.length === sequence.length){
-        inputLock = true;
-        addSequenceItems(difficulty);
-        inputSequence=[];
-        setTimeout(playSequence, timeConstants.PLAY_ROUND_INTERVAL, 0);
-    }
-}
-
-function checkInputMatch(){
-    return sequence[inputSequence.length-1] === inputSequence[inputSequence.length-1];
-}
-
+//Enter input sequence
 function onClickButton(el)
 {
     if(inputLock) return; //Stop player from interacting
@@ -87,4 +89,8 @@ function onClickButton(el)
         inputSequence=[];
         inputLock=true;
     }
+}
+
+function checkInputMatch(){
+    return sequence[inputSequence.length-1] === inputSequence[inputSequence.length-1];
 }
