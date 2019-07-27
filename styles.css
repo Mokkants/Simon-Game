@@ -2,10 +2,23 @@ html,body{
   height:100%;
 }
 
-body{
-  display:grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+.flex-container{
+  display:flex;
+  align-items:center;
+  justify-content:space-evenly;
+  height:100%;
+}
+
+@media screen and (max-width: 1000px) {
+  .flex-container {
+    flex-flow: column-reverse;
+    justify-content:space-evenly;
+  }
+}
+
+.ui-container{
+  display: flex;
+  flex-flow: column;
 }
 
 .board-wrap{
@@ -162,19 +175,6 @@ body{
 }
 
 #top-score{
-  grid-column-start: 2;
   width:100%;
   text-align: center;
-}
-
-body>span{
-  grid-column-start: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-flow:column;
-}
-
-.board-cell{
-  grid-row-start: 2;
 }

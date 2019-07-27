@@ -9,12 +9,12 @@
     <title>Simon Game</title>
 </head>
 <body>
-    <span>
-        Best score:
-        <span id="top-score">0</span>
-    </span>
-    <span class="board-cell">
-        <div class="board-wrap">
+    <div class="flex-container">
+        <div class="ui-container difficulty-container">
+            <span>Difficulty</span>
+        </div>    
+        <div class="board-container">
+            <div class="board-wrap">
                 <div class="board">
                     <div class="button" id="button-top-left" onclick="onClickButton(this)"></div>
                     <div class="button" id="button-top-right" onclick="onClickButton(this)"></div>
@@ -27,9 +27,12 @@
                     </div>
                 </div>
             </div>
-    </span>
-    
+        </div>
+        <div class="ui-container score-container">
+            <span>Best score:</span>
+            <span id="top-score">0</span>
+        </div>
+    </div>
 <script src="game.js"></script>
-
 </body>
 </html>
