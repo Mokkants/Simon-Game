@@ -119,3 +119,7 @@ function updateRecordScore(){
     }
     currentCorrectInputs = 0;
 }
+
+function setDifficulty(newDiff){
+    difficulty = newDiff;
+}

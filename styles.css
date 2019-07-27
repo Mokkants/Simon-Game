@@ -19,6 +19,8 @@ html,body{
 .ui-container{
   display: flex;
   flex-flow: column;
+  width:100%;
+  text-align: center;
 }
 
 .board-wrap{
@@ -172,9 +174,4 @@ html,body{
   display: flex;
   justify-content: center;
   align-items:center;
-}
-
-#top-score{
-  width:100%;
-  text-align: center;
 }
