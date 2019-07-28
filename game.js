@@ -1,4 +1,6 @@
 var inputLock = true; //Prevent player from interacting until false
+var gameInProgress = false;
+
 var difficulty = 1; //No. of buttons added to the sequence per round
 var sequence = []; //Color sequence
 var inputSequence = []; //Sequence entered by player
@@ -29,6 +31,9 @@ var timeConstants = Object.freeze({
 
 //Start game
 function onClickPlay(){
+    if(!gameInProgress){
+        gameInProgress = true;
+    }
     playRound();   
 }
 
@@ -102,6 +107,7 @@ function onClickButton(el)
     }
     else{
         //Game over, reset
+        gameInProgress = false;
         sequence=[];
         inputSequence=[];
         currentCorrectInputs = 0;
@@ -120,6 +126,7 @@ function updateRecordScore(){
     currentCorrectInputs = 0;
 }
 
-function setDifficulty(newDiff){
+function onSetDifficulty(newDiff){
+    if(gameInProgress) return; //Only allow difficulty change when not playing
     difficulty = newDiff;
 }
