@@ -9,7 +9,7 @@ var recordCorrectInputs = 0;
 var currentCorrectInputs = 0;
 
 //Number associated with markup id
-var ids = Object.freeze({
+var colorButtonIDs = Object.freeze({
     1:"button-top-left",
     2:"button-top-right",
     3:"button-bottom-left",
@@ -18,7 +18,23 @@ var ids = Object.freeze({
 
 var stringConstants = Object.freeze({
     ACTIVE_CLASS_NAME : "active",
-    COOLDOWN_CLASS_NAME : "cooling-down"
+    COOLDOWN_CLASS_NAME : "cooling-down",
+    START_ICON_CLASS_NAME: "fa-play",
+    TIMER_ICON_CLASS_NAME: "fa-stopwatch",
+});
+
+var winRoundIcons = Object.freeze({
+    WIN_ROUND_ICON_1_CLASS_NAME: "fa-smile-beam",
+    WIN_ROUND_ICON_2_CLASS_NAME: "fa-thumbs-up",
+    WIN_ROUND_ICON_3_CLASS_NAME: "fa-medal",
+    WIN_ROUND_ICON_4_CLASS_NAME: "fa-heart"
+});
+
+var loseRoundIcons = Object.freeze({
+    LOSE_ROUND_ICON_1_CLASS_NAME: "fa-sad-tear",
+    LOSE_ROUND_ICON_2_CLASS_NAME: "fa-skull",
+    LOSE_ROUND_ICON_3_CLASS_NAME: "fa-thumbs-down",
+    LOSE_ROUND_ICON_4_CLASS_NAME: "fa-heart-broken",
 });
 
 var timeConstants = Object.freeze({
@@ -30,10 +46,8 @@ var timeConstants = Object.freeze({
 });
 
 //Start game
-function onClickPlay(){
-    if(!gameInProgress){
-        gameInProgress = true;
-    }
+function startGame(){
+    gameInProgress = true;
     playRound();   
 }
 
@@ -59,7 +73,7 @@ function addSequenceItems(difficulty){
 //Fire buttons in the sequence (recursively, with delay)
 function playSequence(index){
     //Fetch corresponding element
-    var el = document.getElementById([ids[sequence[index]]]); 
+    var el = document.getElementById([colorButtonIDs[sequence[index]]]); 
     fireButton(el);
 
     if(sequence.length-1 !== index){
@@ -94,7 +108,7 @@ function onClickButton(el)
     if(el.classList.contains(stringConstants.COOLDOWN_CLASS_NAME)) return;
     inputLock=true;
 
-    var id = Object.keys(ids).find(key => ids[key] === el.id);
+    var id = Object.keys(colorButtonIDs).find(key => colorButtonIDs[key] === el.id);
     inputSequence.push(parseInt(id,10));
 
     if(checkInputMatch()){
@@ -129,4 +143,10 @@ function updateRecordScore(){
 function onSetDifficulty(newDiff){
     if(gameInProgress) return; //Only allow difficulty change when not playing
     difficulty = newDiff;
+}
+
+function onClickPanelButton(){
+    if(!gameInProgress){
+        startGame();
+    }
 }
