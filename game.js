@@ -19,6 +19,7 @@ var colorButtonIDs = Object.freeze({
 var stringConstants = Object.freeze({
     ACTIVE_CLASS_NAME : "active",
     COOLDOWN_CLASS_NAME : "cooling-down",
+    FONT_AWESOME_CLASS_NAME:"fa",
     START_ICON_CLASS_NAME: "fa-play",
     TIMER_ICON_CLASS_NAME: "fa-stopwatch",
 });
@@ -148,5 +149,29 @@ function onSetDifficulty(newDiff){
 function onClickPanelButton(){
     if(!gameInProgress){
         startGame();
+    }
+}
+
+//Param is map of icon names
+function getRandomIcon(obj){
+    var keys = Object.keys(obj);
+    var randomIndex = Math.floor(Math.random() * keys.length) + 1;
+    return obj[keys[randomIndex]];
+}
+
+function updatePanelDisplay(icon, text){
+    var el = document.getElementById("panel-button");
+
+    //Clear out previous icon
+    var iterator = el.classList.entries();
+    for(var val of iterator){
+        if(val[1]!==FONT_AWESOME_CLASS_NAME){
+            el.classList.remove(val[1]);
+        }
+    }
+    el.classList.add(icon);
+
+    if(text){
+        el.innerHTML = text;
     }
 }
